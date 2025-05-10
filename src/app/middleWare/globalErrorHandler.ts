@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { ZodError } from "zod";
 import { ErrorRequestHandler } from "express";
 import { TErrorSource } from "../Error/interface/error";
@@ -57,13 +59,15 @@ const globalErrorHandler: ErrorRequestHandler = (err, req, res, next) => {
     ];
   }
 
-  return res.status(statusCode).json({
+   res.status(statusCode).json({
     status: false,
     message,
     errorSource,
     err,
     stack: config.node_env === "development" ? err?.stack : null,
   });
+
+return;
 };
 
 export default globalErrorHandler;
